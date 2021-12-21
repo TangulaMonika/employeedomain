@@ -13,7 +13,6 @@ public class EmployeeDetails {
 	// private Date dob;
 	private String empDesignation;
 	private boolean active = true;
-
 	private LocalDate dateOfJoin;
 	private LocalDate dateOfRelieving;
 

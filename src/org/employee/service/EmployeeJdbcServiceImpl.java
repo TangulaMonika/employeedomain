@@ -29,14 +29,15 @@ public class EmployeeJdbcServiceImpl implements EmpService {
 			
 			while (rs.next()) {
 				
-				//System.out.println("User ID=" + rs.getInt("empId") + ", Name=" + rs.getString("empFirstname"));
-				
-				return (rs.getInt("empId") + " " + rs.getString("empFirstname") + " " + rs.getString("empLastname") + " " + rs.getLong("phone") + " " +
-						rs.getInt("salary") + " " + rs.getString("email") + " " + rs.getDate("dateOfJoin") + " " + rs.getString("empDesignation") + " " + rs.getBoolean("active")
-						+ " " + rs.getDate("dateOfRelieving"));
- 	}
+				System.out.println("User ID=" + rs.getInt("empId") + ", Name=" + rs.getString("empFirstname"));
+//				
+//				return (rs.getInt("empId") + " " + rs.getString("empFirstname") + " " + rs.getString("empLastname") + " " + rs.getLong("phone") + " " +
+//						rs.getInt("salary") + " " + rs.getString("email") + " " + rs.getDate("dateOfJoin") + " " + rs.getString("empDesignation") + " " + rs.getBoolean("active")
+//						+ " " + rs.getDate("dateOfRelieving"));
+// 	}
 				
 		
+		}
 		}
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -53,28 +54,25 @@ public class EmployeeJdbcServiceImpl implements EmpService {
 		// TODO Auto-generated method stub
 		PreparedStatement prepStatement ;
 		try {
-//			prepStatement  = util.getConnection().prepareStatement("insert into employee values(?,?,?,?,?,?,?,?,?,?)");
-//			prepStatement.setInt(1, e.getEmpId());
-//			prepStatement.setString(2, e.getEmpFirstname());
-//			prepStatement.setString(3, e.getEmpLastname());
-//			prepStatement.setLong(4, e.getPhone());
-//			prepStatement.setLong(5, e.getSalary());
-//			prepStatement.setString(6,e.getEmail());
-//			 prepStatement.setDate(5, new java.sql.Date(new SimpleDateFormat("MM/dd/yyyy").parse(e.getDateOfJoin()));
-//			prepStatement.setDate(7,e.getDateOfJoin());
-//			prepStatement.setString(8, e.getEmpDesignation());
-//			prepStatement.setBoolean(9,e.isActive());
-//			prepStatement.setDate(10, e.getDateOfRelieving());
-//			prepStatement.executeUpdate(); // the query is stored in rs(result set)
-//			return util.addemployee(Employee);
-//			
-// 	}
-//		catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return null;
-	
+			prepStatement  = util.getConnection().prepareStatement("insert into employee values (?,?,?,?,?,?,?,?,?,?)");
+			prepStatement.setInt(1,104);
+			prepStatement.setString(2,"Joey");
+			prepStatement.setString(3,"Tribbiani");
+			prepStatement.setLong(4, 9513246870L);
+			prepStatement.setLong(5,50000L);
+			prepStatement.setString(6, "joey@gmail.com");
+			prepStatement.setString(7,"Developer");
+			prepStatement.setBoolean(8,true);
+			prepStatement.setDate(9, null);
+			prepStatement.setDate(10,null);
+			int i = prepStatement.executeUpdate();
+			System.out.println(i+" records updated");
+			}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 		
 	}
 	
