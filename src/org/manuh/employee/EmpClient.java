@@ -34,7 +34,7 @@ public class EmpClient {
 		service.addEmployee(emp1);
 		service.addEmployee(emp2);
 		service.addEmployee(emp3);
-		service.getAllEmployeeDetails();
+		//service.getAllEmployeeDetails();
 
 		
 		//System.out.println(service.getAllEmployeeDetails());
