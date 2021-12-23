@@ -11,7 +11,7 @@ public interface EmpService {
 
 	public List<EmployeeDetails> addEmployee(EmployeeDetails Employee );
 	
-	public List< EmployeeDetails> getAllEmployeeDetails();
+	public List<EmployeeDetails> getAllEmployeeDetails();
 	
 	public List<EmployeeDetails> deleteEmployee( EmployeeDetails Employee);
 	

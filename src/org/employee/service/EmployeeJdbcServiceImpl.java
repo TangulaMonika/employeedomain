@@ -1,6 +1,5 @@
 package org.employee.service;
 
-
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,88 +14,100 @@ import org.manuh.domain.EmployeeDetails;
 public class EmployeeJdbcServiceImpl implements EmpService {
 	JdbcUtil util = new JdbcUtil();
 	EmployeeDetails e = new EmployeeDetails();
-	
-	
 
 	@Override
 	public EmployeeDetails getEmployee(int empId) {
 		// TODO Auto-generated method stub
-		PreparedStatement prepStatement ;
+
+		PreparedStatement prepStatement;
 		try {
-			prepStatement  = util.getConnection().prepareStatement("select * from employee where empId = ?");
+			prepStatement = util.getConnection().prepareStatement("select * from employee where empId = ?");
 			prepStatement.setInt(1, empId);
-			ResultSet rs = prepStatement .executeQuery(); // the query is stored in rs(result set)
-			
+			ResultSet rs = prepStatement.executeQuery(); // the query is stored in rs(result set)
+
 			while (rs.next()) {
-				
-				System.out.println("User ID=" + rs.getInt("empId") + ", Name=" + rs.getString("empFirstname"));
-//				
-//				return (rs.getInt("empId") + " " + rs.getString("empFirstname") + " " + rs.getString("empLastname") + " " + rs.getLong("phone") + " " +
-//						rs.getInt("salary") + " " + rs.getString("email") + " " + rs.getDate("dateOfJoin") + " " + rs.getString("empDesignation") + " " + rs.getBoolean("active")
-//						+ " " + rs.getDate("dateOfRelieving"));
-// 	}
-				
-		
-		}
-		}
-		catch (SQLException e) {
+				e.setEmpId(rs.getInt("empId"));
+				e.setEmpFirstname(rs.getString("empFirstname"));
+				e.setEmpLastname(rs.getString("empLastname"));
+				e.setEmpFirstname(rs.getString("empFirstname"));
+				e.setPhone(rs.getLong("phone"));
+				e.setSalary(rs.getLong("salary"));
+				e.setEmail(rs.getString("email"));
+				e.setEmpDesignation(rs.getString("empDesignation"));
+				e.setActive(rs.getBoolean("active"));
+			}
+
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return null;
-	}
-	
 
-	
+		return e;
+	}
+
 	@Override
 	public List<EmployeeDetails> addEmployee(EmployeeDetails Employee) {
 		// TODO Auto-generated method stub
-		PreparedStatement prepStatement ;
+		PreparedStatement prepStatement;
 		try {
-			prepStatement  = util.getConnection().prepareStatement("insert into employee values (?,?,?,?,?,?,?,?,?,?)");
-			prepStatement.setInt(1,104);
-			prepStatement.setString(2,"Joey");
-			prepStatement.setString(3,"Tribbiani");
-			prepStatement.setLong(4, 9513246870L);
-			prepStatement.setLong(5,50000L);
-			prepStatement.setString(6, "joey@gmail.com");
-			prepStatement.setString(7,"Developer");
-			prepStatement.setBoolean(8,true);
+			prepStatement = util.getConnection().prepareStatement("insert into employee values (?,?,?,?,?,?,?,?,?,?)");
+			prepStatement.setInt(1,Employee.getEmpId());
+			prepStatement.setString(2,Employee.getEmpFirstname());
+			prepStatement.setString(3,Employee.getEmpLastname());
+			prepStatement.setLong(4,Employee.getPhone());
+			prepStatement.setLong(5,Employee.getSalary());
+			prepStatement.setString(6,Employee.getEmail());
+			prepStatement.setString(7,Employee.getEmpDesignation());
+			prepStatement.setBoolean(8, Employee.isActive());
 			prepStatement.setDate(9, null);
 			prepStatement.setDate(10,null);
-			int i = prepStatement.executeUpdate();
-			System.out.println(i+" records updated");
-			}
-		catch (SQLException e) {
+			//ResultSet rs = prepStatement.execute();prepStatement.executeUpdate();
+			//return util.addemployee(Employee);
+			prepStatement.execute();
+
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
-		
+
 	}
-	
 
 	@Override
 	public List<EmployeeDetails> getAllEmployeeDetails() {
 		// TODO Auto-generated method stub
-		PreparedStatement prepStatement ;
+		List<EmployeeDetails> employeeList = new ArrayList<EmployeeDetails>();
+		Statement prepStatement;
 		try {
-			prepStatement  = util.getConnection().prepareStatement("select * from employee");
-			//prepStatement.setInt(1, empId);
-			ResultSet rs = prepStatement.executeQuery();
+			prepStatement = util.getConnection().createStatement();
+
+			ResultSet rs = prepStatement.executeQuery("select * from employee"); // the query is stored in rs(result
+																					// set)
+
 			while (rs.next()) {
-				System.out.println("User ID=" + rs.getInt("empId") + ", Name=" + rs.getString("empFirstname"));
+				e.setEmpId(rs.getInt("empId"));
+				e.setEmpFirstname(rs.getString("empFirstname"));
+				e.setEmpLastname(rs.getString("empLastname"));
+				e.setEmpFirstname(rs.getString("empFirstname"));
+				e.setPhone(rs.getLong("phone"));
+				e.setSalary(rs.getLong("salary"));
+				e.setEmail(rs.getString("email"));
+				e.setEmpDesignation(rs.getString("empDesignation"));
+				e.setActive(rs.getBoolean("active"));
+				employeeList.add(new EmployeeDetails(rs.getInt("empId") , rs.getString("empFirstname") , rs.getString("empLastname"),
+						rs.getLong("phone"),rs.getLong("salary"),rs.getString("email"),rs.getString("empDesignation"),rs.getBoolean("active"),null,null));
+				 //e.setDateOfJoin(rs.getDate(null));
+				 //System.out.println("User ID=" + rs.getInt("empId") + ", Name=" +rs.getString("empFirstname"));
 				
 			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-			catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return null;
-		
-	
+
+		return employeeList;
+
 	}
 
 	@Override
@@ -122,8 +133,6 @@ public class EmployeeJdbcServiceImpl implements EmpService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 	@Override
 	public List<EmployeeDetails> addEmployee(EmployeeDetails Employee, int empId) {

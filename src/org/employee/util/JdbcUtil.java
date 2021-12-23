@@ -2,6 +2,7 @@ package org.employee.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -31,6 +32,40 @@ public class JdbcUtil {
 //		}
 //		return null;
 //	}
+	public void insert(EmployeeDetails employee) {
+		String Query = "insert into employee values(?,?,?,?,?,?,?,?,?,?)";
+		try {
+			PreparedStatement prep = getConnection().prepareStatement("Query");
+			prep.setInt(1,employee.getEmpId());
+			prep.setString(2,employee.getEmpFirstname());
+			prep.setString(3,employee.getEmpLastname());
+			prep.setLong(4,employee.getPhone());
+			prep.setLong(5,employee.getSalary());
+			prep.setString(6,employee.getEmail());
+			prep.setString(7,employee.getEmpDesignation());
+			prep.setBoolean(8,employee.isActive());
+			//prep.setDate(9, employee.getDateOfJoin());
+		//	prep.setDate(10, employee.getDateOfRelieving());
+			prep.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public int getEmployee(int empId) {
+		String Query = "select * from employee where empId = ?";
+		try {
+			PreparedStatement prep = getConnection().prepareStatement("Query");
+			prep.setInt(1, empId);
+			prep.execute();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return empId;
+		
+	}
 
 	public List<EmployeeDetails> addemployee(EmployeeDetails employee)   {
 		// TODO Auto-generated method stub
