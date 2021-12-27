@@ -13,7 +13,7 @@ public interface EmpService {
 	
 	public List<EmployeeDetails> getAllEmployeeDetails();
 	
-	public List<EmployeeDetails> deleteEmployee( EmployeeDetails Employee);
+	public boolean deleteEmployee( int empId);
 	
 	public List<EmployeeDetails> topnEmployee( int topn);
 	
@@ -21,7 +21,7 @@ public interface EmpService {
 	
 	public List<EmployeeDetails> sortBysalary();
 
-	List<EmployeeDetails> addEmployee(EmployeeDetails Employee, int empId);
+	
 	
 
 }

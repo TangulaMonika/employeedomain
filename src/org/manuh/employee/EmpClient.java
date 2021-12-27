@@ -16,27 +16,21 @@ public class EmpClient {
 		
 		EmployeeDetails emp = new EmployeeDetails(101, "Chandler", "Bing", 987654321L, 50000L,"bing@gmail.com","Manager" , true, LocalDate.of(2018, 03, 12), LocalDate.now());
 		EmployeeDetails emp1 = new EmployeeDetails(102, "Monica", "Bing", 9876783210L, 45000L, "monica@gmail.com","Developer", false,LocalDate.of(2015, 05, 12), LocalDate.now());
-		EmployeeDetails emp2 = new EmployeeDetails(103, "Ross", "Geller", 9876712210L, 35000, "ross@gmail.com","Tester", true,LocalDate.now(), LocalDate.now());
+		EmployeeDetails emp2 = new EmployeeDetails(103, "Ross", "Geller", 9876712210L, 35000, "ross@gmail.com","Tester", true,LocalDate.now(), LocalDate.of(2017,04,13));
 		EmployeeDetails emp3 = new EmployeeDetails(104, "Rachel", "Geller", 9876712210L, 15000, "ross@gmail.com","Tester", true,LocalDate.now(),LocalDate.now());
 		EmployeeDetails emp4 = new EmployeeDetails(105, "Joey", "Tribbiani", 9876712210L, 15000, "joey@gmail.com","Developer", true,LocalDate.now(),LocalDate.now());
+		EmployeeDetails emp5 = new EmployeeDetails(106, "Pheobe", "Buffay", 9876712210L, 35000, "phoebe@gmail.com","Manager", false,LocalDate.now(),LocalDate.now());
+		EmployeeDetails emp6 = new EmployeeDetails(107, "Mike", "Buffay", 9876712210L, 45000, "mike@gmail.com","Admin", false,LocalDate.of(2001,04,15),LocalDate.now());
 
-//		EmployeeDetails emp = new EmployeeDetails(101, "Chandler", "Bing", 9876543210L, 50000L, "bing@gmail.com",
-//				LocalDate.of(2018, 03, 12), "Manager", true, LocalDate.now());
-//		EmployeeDetails emp1 = new EmployeeDetails(102, "Monica", "Bing", 9876783210L, 45000L, "monica@gmail.com",
-//				LocalDate.of(2015, 05, 12), "Developer", false, LocalDate.now());
-//		EmployeeDetails emp2 = new EmployeeDetails(103, "Ross", "Geller", "9876712210", 35000, "ross@gmail.com",
-//				LocalDate.now(), "Tester", true, LocalDate.now());
-//		EmployeeDetails emp3 = new EmployeeDetails(104, "Ross", "Geller", "9876712210", 15000, "ross@gmail.com",
-//				LocalDate.now(), "Tester", true, LocalDate.now());
 
-	
 		EmpService service = new EmpServiceImpl();
 		service.addEmployee(emp);
 		service.addEmployee(emp1);
 		service.addEmployee(emp2);
 		service.addEmployee(emp3);
 		service.addEmployee(emp4);
-
+		service.addEmployee(emp5);
+		service.addEmployee(emp6);
 		service.getAllEmployeeDetails();
 
 		
@@ -51,10 +45,13 @@ public class EmpClient {
 //		System.out.println(service.sortBysalary());
 		JdbcUtil obj = new JdbcUtil();
 		EmployeeJdbcServiceImpl obj1 = new EmployeeJdbcServiceImpl();
-		//System.out.println(obj1.getEmployee(102));
-		obj1.addEmployee(emp4);
-		System.out.println(obj1.getAllEmployeeDetails());
+		System.out.println(obj1.getEmployee(102));
+	   System.out.println(obj1.getAllEmployeeDetails());
+		//System.out.println(obj1.addEmployee(emp6));
+		obj1.deleteEmployee(106);
 		
+		System.out.println(obj1.getAllEmployeeDetails());
+//		
 		
 		
 		

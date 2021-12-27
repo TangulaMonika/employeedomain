@@ -45,10 +45,19 @@ public class EmpServiceImpl  implements EmpService {
 		}
 
 		@Override
-		public List<EmployeeDetails> deleteEmployee(EmployeeDetails Employee) {
+		public boolean deleteEmployee(int empId) {
 			// TODO Auto-generated method stub
-			EmployeeList.remove(Employee);
-			return EmployeeList;
+			for(int i =0;i<EmployeeList.size();i++) 
+			{
+				if (empId==EmployeeList.get(i).getEmpId())
+				{
+					EmployeeList.remove(EmployeeList.get(i));
+					
+				}
+			
+			
+			}
+			return true;
 		}
 
 		@Override
@@ -98,11 +107,6 @@ public class EmpServiceImpl  implements EmpService {
 			return EmployeeList;
 		}
 
-		@Override
-		public List<EmployeeDetails> addEmployee(EmployeeDetails Employee, int empId) {
-			// TODO Auto-generated method stub
-			return null;
-		}
 
 		
 
