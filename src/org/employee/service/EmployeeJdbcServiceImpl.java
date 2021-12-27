@@ -35,22 +35,19 @@ public class EmployeeJdbcServiceImpl implements EmpService {
 	@Override
 	public List<EmployeeDetails> topnEmployee(int topn) {
 		// TODO Auto-generated method stub
-		return null;
+		return util.topnEmployee(topn);
 	}
 
 	@Override
 	public EmployeeDetails updateDateOfJoin(int empId) {
 		// TODO Auto-generated method stub
-		return null;
+		return util.updateDateOfJoin(empId);
 	}
 
 	@Override
 	public List<EmployeeDetails> sortBysalary() {
 		// TODO Auto-generated method stub
-		return null;
+		return util.sortBysalary();
 	}
 
-	
-
-	
 }

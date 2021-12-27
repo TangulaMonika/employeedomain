@@ -107,7 +107,4 @@ public class EmpServiceImpl  implements EmpService {
 			return EmployeeList;
 		}
 
-
-		
-
 }

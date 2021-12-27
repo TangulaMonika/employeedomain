@@ -10,14 +10,14 @@ public class EmployeeDetails {
 	private String phone;
 	private long salary;
 	private String email;
-	//private Date dob;
+	// private Date dob;
 	private String empDesignation;
 	private boolean active = true;
 	private LocalDate dateOfJoin;
 	private LocalDate dateOfRelieving;
 
 	public EmployeeDetails(int empId, String empFirstname, String empLastname, String phone, long salary, String email,
-			LocalDate dateOfJoin, String empDesignation, boolean active,LocalDate dateOfRelieving) {
+			LocalDate dateOfJoin, String empDesignation, boolean active, LocalDate dateOfRelieving) {
 		super();
 		this.empId = empId;
 		this.empFirstname = empFirstname;
@@ -29,7 +29,7 @@ public class EmployeeDetails {
 		this.empDesignation = empDesignation;
 		this.active = active;
 		this.dateOfRelieving = dateOfRelieving;
-	}            
+	}
 
 	public LocalDate getDateofrelieving() {
 		return dateOfRelieving;
@@ -67,10 +67,10 @@ public class EmployeeDetails {
 		this.empLastname = empLastname;
 	}
 
-	
 	public String getEmployeename() {
 		return this.empFirstname + " " + this.empLastname;
 	}
+
 	public String getPhone() {
 		return phone;
 	}
@@ -125,7 +125,5 @@ public class EmployeeDetails {
 				+ ", phone=" + phone + ", salary=" + salary + ", email=" + email + ", empDesignation=" + empDesignation
 				+ ", active=" + active + ", dateOfJoin=" + dateOfJoin + ", dateofrelieving=" + dateOfRelieving + "]";
 	}
-
-	
 
 }
