@@ -1,4 +1,4 @@
-package org.manuh.domain;
+ package org.manuh.domain;
 
 public class Department {
 
@@ -12,6 +12,10 @@ public class Department {
 		this.project = project;
 		this.deptId = deptId;
 		this.workingHours = workingHours;
+	}
+
+	public Department() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getDeptName() {

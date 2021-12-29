@@ -1,12 +1,16 @@
 package org.manuh.employee;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
 
+import org.department.service.DeptJdbcServiceImpl;
+import org.department.service.DeptService;
+import org.department.service.DeptServiceImpl;
+import org.department.util.DeptJdbcUtil;
 import org.employee.service.EmpService;
 import org.employee.service.EmpServiceImpl;
 import org.employee.service.EmployeeJdbcServiceImpl;
 import org.employee.util.JdbcUtil;
+import org.manuh.domain.Department;
 import org.manuh.domain.EmployeeDetails;
 
 public class EmpClient {
@@ -37,6 +41,14 @@ public class EmpClient {
 		service.addEmployee(emp5);
 		service.addEmployee(emp6);
 		service.getAllEmployeeDetails();
+		
+		Department dept = new Department("IT", "Nishita", "Employee management project", 201, 13);
+		Department dept1 = new Department("Admin", "Monika", "Product management project", 202, 12);
+		Department dept2 = new Department("Business", "Pravallika", "Student management project", 203, 15);
+		Department dept3 = new Department("Non-Tech", "Praneeth", "online banking management project", 204, 12);
+		Department dept4 = new Department("Admin", "Pardhu", "Employee management project", 205, 13);
+		Department dept5 = new Department("Non-Tech", "Satish", "Product management project", 206, 12);
+		Department dept6 = new Department("Business", "Aravind", "Student management project", 207, 12);
 
 		// System.out.println(service.getAllEmployeeDetails());
 		// service.deleteEmployee(emp);
@@ -47,18 +59,18 @@ public class EmpClient {
 //		System.out.println(service.topnEmployee(2));
 //		System.out.println("Topnemployee end");
 //		System.out.println(service.sortBysalary());
-		JdbcUtil obj = new JdbcUtil();
-		EmployeeJdbcServiceImpl obj1 = new EmployeeJdbcServiceImpl();
-		// System.out.println(obj1.getEmployee(102));
-		// System.out.println(obj1.getAllEmployeeDetails());
-		// System.out.println(obj1.addEmployee(emp6));
-		// obj1.deleteEmployee(107);
-
-		// System.out.println(obj1.getAllEmployeeDetails());
-		System.out.println(obj1.topnEmployee(2));
-		System.out.println(obj1.getAllEmployeeDetails());
-		System.out.println(obj1.updateDateOfJoin(102));
-		System.out.println(obj1.sortBysalary());
+//		JdbcUtil obj = new JdbcUtil();
+//		EmployeeJdbcServiceImpl obj1 = new EmployeeJdbcServiceImpl();
+//		 System.out.println(obj1.getEmployee(102));
+		//System.out.println(obj1.getAllEmployeeDetails());
+		//System.out.println(obj1.addEmployee(emp6));
+//		obj1.deleteEmployee(107);
+//
+//		// System.out.println(obj1.getAllEmployeeDetails());
+//		System.out.println(obj1.topnEmployee(2));
+//		System.out.println(obj1.getAllEmployeeDetails());
+//		System.out.println(obj1.updateDateOfJoin(102));
+//		System.out.println(obj1.sortBysalary());
 
 //		try {
 //			obj.executeStatement("select * from employee");
@@ -66,6 +78,22 @@ public class EmpClient {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		DeptService service1 = new DeptServiceImpl();
+		service1.addDept(dept);
+		service1.addDept(dept1);
+		service1.addDept(dept2);
+		service1.addDept(dept3);
+		service1.addDept(dept4);
+		service1.addDept(dept5);
+		service1.addDept(dept6);
+		service1.getAllDepts();
+		
+		DeptJdbcUtil var = new DeptJdbcUtil();
+		DeptJdbcServiceImpl var1 = new DeptJdbcServiceImpl();
+//		System.out.println(var1.addDept(dept6));
+//		System.out.println(service1.getAllDepts());
+		System.out.println(service1.getNoOfEmpInaDept("Non-Tech"));
+
 
 	}
 }
