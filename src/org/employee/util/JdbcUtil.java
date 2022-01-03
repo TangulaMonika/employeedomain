@@ -12,10 +12,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.manuh.domain.Department;
 import org.manuh.domain.EmployeeDetails;
 
 public class JdbcUtil {
 	EmployeeDetails e = new EmployeeDetails();
+	private String d;
+	private String d1;
 
 	public Connection getConnection() throws SQLException {
 		Connection connection = null;
@@ -244,4 +247,37 @@ public class JdbcUtil {
 		}
 		return employeeList;
 	}
+	
+	public List joins() {
+		List l=new ArrayList<>();
+		Department dept = null;
+		PreparedStatement prepStatement;
+		try {
+			prepStatement = getConnection().prepareStatement("select empId,empFirstname,empLastname,salary,deptId,deptName from employee t1 join department t2 on t1.empId=t2.deptId;");
+			ResultSet rs = prepStatement.executeQuery();
+			while (rs.next()) {
+//				java.sql.Date joinDate = rs.getDate("dateOfJoin");
+//				java.sql.Date RelievingDate1 = rs.getDate("dateOfRelieving");
+//				LocalDate dateOfJoin = joinDate.toLocalDate();
+//				LocalDate RelievingDate = RelievingDate1.toLocalDate();
+//				e =  new EmployeeDetails(rs.getInt("empId"), rs.getString("empFirstname"),
+//						rs.getString("empLastname"), rs.getLong("phone"), rs.getLong("salary"), rs.getString("email"),
+//						rs.getString("empDesignation"), rs.getBoolean("active"), dateOfJoin, RelievingDate);
+				
+//			 dept = new Department(rs.getString("deptName"),rs.getString("hod"),rs.getString("Project"),rs.getInt("deptId"),rs.getInt("workingHours"));
+			d=rs.getInt("empId")+"  "+rs.getString("empFirstname")+" "+rs.getString("empLastname")+" "+  rs.getLong("salary")+ " ";	
+		
+			d1=rs.getString("deptName")+" "+rs.getInt("deptId"); 
+			l.add(d+d1);
+			
+				
+			}
+		
 	}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return l;
+}
+}

@@ -49,5 +49,8 @@ public class EmployeeJdbcServiceImpl implements EmpService {
 		// TODO Auto-generated method stub
 		return util.sortBysalary();
 	}
+	public List joins() {
+		return util.joins();
+	}
 
 }
