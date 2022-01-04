@@ -67,11 +67,12 @@ public class DeptJdbcUtil {
 		return deptList;
 	}
 
-	public Department getNoOfEmpInaDept(String deptName) {
+	public int getNoOfEmpInaDept(String deptName) {
 		Department dep = new Department();
+		int  count = 0;
 		PreparedStatement prp;
 		try {
-		prp = getConnection().prepareStatement("select * from department where deptName = ?");
+		prp = getConnection().prepareStatement("select count from department where deptName = ?");
 		prp.setString(1, deptName);
 		ResultSet rs = prp.executeQuery();
 		}
@@ -80,7 +81,7 @@ public class DeptJdbcUtil {
 			e.printStackTrace();
 		}
 
-		return dep;
+		return count;
 
 	}
 }

@@ -25,7 +25,7 @@ public class DeptJdbcServiceImpl implements DeptService {
 	@Override
 	public int getNoOfEmpInaDept(String deptName) {
 		// TODO Auto-generated method stub
-		return 0;
+		return jdbc.getNoOfEmpInaDept(deptName);
 	}
 	
 
