@@ -96,7 +96,7 @@ public class EmpClient {
 //		DeptJdbcServiceImpl var1 = new DeptJdbcServiceImpl();
 ////		System.out.println(var1.addDept(dept6));
 //		System.out.println(service1.getAllDepts());
-//		System.out.println(service1.getNoOfEmpInaDept("Non-Tech"));
+//		 System.out.println(service1.getNoOfEmpInaDept("Non-Tech"));
 //		
 		
 
